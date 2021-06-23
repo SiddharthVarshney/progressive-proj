@@ -1,0 +1,15 @@
+{
+  "userId": "ajksknfou31ho",
+  "userName": "Sample Name",
+  "userEmail": "sample@gmail.com",
+  "gender": "M",
+  "userRating": 23,
+  "dateOfCreation": "date:time",
+  "quesId": ["dnkqnkfdn", "jnkejnfknn"],
+  "socialLisks": {
+    "facebook": "facebook.com",
+    "github": "github.com",
+    "linkedIn": null
+  },
+  "accountFollowingId": ["smlfkmelqkfnmp", "lwnfln13klnflksa "]
+}
