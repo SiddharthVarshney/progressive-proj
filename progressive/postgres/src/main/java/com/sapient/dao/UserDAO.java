@@ -17,12 +17,12 @@ public class UserDAO {
 		gc = new GetConnection(); 
 	}
 	
-	public boolean insertEmp(User user) {
+	public boolean insertUser(User user) {
 		String sql="insert into users(name, email,password ,gender, rating) values (?,?,?,?,?)"; 
 		
 		try {
 			gc.ps = GetConnection.getPostGressConn().prepareStatement(sql);
-			gc.ps.setString(1, user.getName());
+			gc.ps.setString(1, user.getUserName());
 			gc.ps.setString(2, user.getEmail());
 			gc.ps.setString(3, user.getPassword());
 			gc.ps.setString(4, user.getGender());

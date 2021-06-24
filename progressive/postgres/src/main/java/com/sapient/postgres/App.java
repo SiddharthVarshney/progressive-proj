@@ -30,8 +30,8 @@ public class App
 			gc.rs = gc.ps.executeQuery(); 
 			while(gc.rs.next()) {
 				User emp = new User(); 
-				emp.setId(gc.rs.getInt(1));
-				emp.setName(gc.rs.getString(2));
+				emp.setUserId(gc.rs.getInt(1));
+				emp.setUserName(gc.rs.getString(2));
 				list.add(emp); 
 			}
 		} catch (SQLException e) {
