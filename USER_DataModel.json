@@ -4,9 +4,9 @@
   "userEmail": "sample@gmail.com",
   "gender": "M",
   "userRating": 23,
-  "dateOfCreation": "date:time",
+  "createdAt": "date:time",
   "quesId": ["dnkqnkfdn", "jnkejnfknn"],
-  "socialLisks": {
+  "socialLinks": {
     "facebook": "facebook.com",
     "github": "github.com",
     "linkedIn": null
