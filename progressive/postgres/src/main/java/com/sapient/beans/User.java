@@ -2,16 +2,19 @@ package com.sapient.beans;
 
 import java.time.LocalDate;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
+import lombok.NoArgsConstructor;
+@AllArgsConstructor
 @Data
+@NoArgsConstructor
 public class User {
-	private int id;
+	private Integer id;
 	private String name;
 	private String email;
 	private String password;
 	private String gender;
-	private int rating;
+	private Double rating;
 	private LocalDate createdAt;
 	
 	
