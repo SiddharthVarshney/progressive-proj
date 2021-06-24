@@ -3,16 +3,16 @@ package com.sapient.beans;
 import java.time.LocalDate;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 public class User {
-	private int userId;
-	private String userName;
+	private int id;
+	private String name;
+	private String email;
 	private String password;
 	private String gender;
-	private String userEmail;
-	private int userRating;
+	private int rating;
+	private LocalDate createdAt;
 	
 	
 }

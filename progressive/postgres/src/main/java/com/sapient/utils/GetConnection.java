@@ -18,7 +18,7 @@ public class GetConnection {
 	public static Connection getPostGressConn() {
 		try {
 			Class.forName("org.postgresql.Driver");
-			connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "admin");
+			connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/project", "postgres", "hi");
 			return connection; 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

@@ -1,13 +1,13 @@
 CREATE DATABASE project;
 \c project;
 CREATE TABLE users(
-    userId SERIAL,
-    userEmail varchar(50) NOT NULL,
+    id SERIAL,
+    name varchar(50) NOT NULL,
+    email varchar(50) NOT NULL,
     password varchar(50) NOT NULL,
-    userName varchar(50) NOT NULL,
-    createdAt TIMESTAMP DEFAULT current_timestamp,
     gender varchar(10),
-    userRating decimal(2,1),
-    PRIMARY KEY (userId),
-    UNIQUE (userEmail)
+    rating decimal(2,1),
+    createdAt TIMESTAMP DEFAULT current_timestamp,
+    PRIMARY KEY (id),
+    UNIQUE (email)
 );
