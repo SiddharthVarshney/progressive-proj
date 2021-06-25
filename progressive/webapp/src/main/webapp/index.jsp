@@ -10,6 +10,8 @@
 
 	<h1>Welcome to Web Application</h1>
 	<a href="./registration.html">Registration</a>
+	<a href="./login.html">Login</a>
+	
 
 </body>
 </html>
