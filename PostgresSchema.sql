@@ -6,7 +6,7 @@ CREATE TABLE users(
     email varchar(50) NOT NULL UNIQUE,
     password varchar(50) NOT NULL,
     gender varchar(10),
-    rating decimal(2,1),
+    rating decimal,
     createdAt TIMESTAMP DEFAULT current_timestamp,
     PRIMARY KEY (userId)
 );

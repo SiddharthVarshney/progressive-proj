@@ -2,6 +2,7 @@ package com.sapient.postgres;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,10 +47,15 @@ public class App
 //		for(User u:list) System.out.println(u);
 //		
         
-        User user = new User(null, "user", null, null, null, null, null);
-
-        log.info(user.toString());
-//        UserDAO dao = new UserDAO();
+//        User user = new User(100, "user", "email2@email.com", "pass", "male", (double) 152, LocalDate.now());
+//        System.out.println(user.toString());
+        User user = new User();
+        user.setEmail("tempo");
+        user.setUserName("newname");
+        UserDAO dao = new UserDAO();
 //        dao.insertUser(user);
+        
+        User returnUser = dao.getUser(1);
+        System.out.println(returnUser.toString());
     }
 }

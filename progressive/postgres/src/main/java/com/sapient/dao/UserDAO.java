@@ -2,12 +2,13 @@ package com.sapient.dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+import java.util.Date;
 import com.sapient.beans.User;
 import com.sapient.utils.GetConnection;
 
 import antlr.collections.List;
 import lombok.extern.slf4j.Slf4j;
+
 
 @Slf4j
 public class UserDAO {
@@ -18,7 +19,7 @@ public class UserDAO {
 	}
 	
 	public boolean insertUser(User user) {
-		String sql="insert into users(name, email,password ,gender, rating) values (?,?,?,?,?)"; 
+		String sql="insert into users(userName, email,password ,gender, rating) values (?,?,?,?,?)"; 
 		
 		try {
 			gc.ps = GetConnection.getPostGressConn().prepareStatement(sql);
@@ -31,26 +32,22 @@ public class UserDAO {
 			return gc.ps.executeUpdate()>0;
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				gc.ps.close();
-				gc.rs.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 		return false;
 	}
 
 	public User getUser(int id) {
-		String sql="select (name, email,password ,gender, rating) from emp where id=?"; 
+		String sql="select username, email,password ,gender, rating, createdat from users where userId=?"; 
 		try {
 			gc.ps = GetConnection.getPostGressConn().prepareStatement(sql); 
 			gc.ps.setInt(1, id);
-			
+//			log.info(gc.ps);
 			gc.rs = gc.ps.executeQuery(); 
 			if(gc.rs.next()) {
-				User user = new User(id,gc.rs.getString(1),gc.rs.getString(2),gc.rs.getString(3),gc.rs.getString(4),gc.rs.getDouble(5),null);
+				User user = new User(id,gc.rs.getString(1),gc.rs.getString(2),gc.rs.getString(3),gc.rs.getString(4),gc.rs.getDouble(5),gc.rs.getDate(6));
+//				
+//				user.setUserName(gc.rs.getString(1));
+				
 				return user;
 			}else {
 				log.info("Record Not Found for " + id);
@@ -68,34 +65,27 @@ public class UserDAO {
 		
 		return null;
 	}
-//
-//	public List<User> getAllEmps() {
-//		String sql ="select empid, empname, empsal from emp";
-//		
-//		try {
-//			gc.ps = GetConnection.getPostGressConn().prepareStatement(sql);
-//			List<User> list = new ArrayList<User>();
-//			
-//			gc.rs = gc.ps.executeQuery(); 
-//			while(gc.rs.next()) {
-//				User emp = new User(); 
-//				emp.setId(gc.rs.getInt(1));
-//				emp.setName(gc.rs.getString(2));
-////				emp.setEmail(gc.rs.getDouble(3));
-//				list.add(emp); 
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}finally {
-//			try {
-//				gc.ps.close();
-//				gc.rs.close();
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		
-//		return null;
-//	}
+	
+	public User getUser(String email) {
+		String sql="select userid,username, email,password ,gender, rating from users where email=?"; 
+		try {
+			gc.ps = GetConnection.getPostGressConn().prepareStatement(sql); 
+			gc.ps.setString(1, email);;
+			
+			gc.rs = gc.ps.executeQuery(); 
+			if(gc.rs.next()) {
+				User user = new User(gc.rs.getInt(1),gc.rs.getString(2),gc.rs.getString(3),gc.rs.getString(4),gc.rs.getString(5),gc.rs.getDouble(6),null);
+				return user;
+			}else {
+				log.info("Record Not Found for " + email);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+
 	
 }
