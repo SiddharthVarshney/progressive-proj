@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class Answer {
 
 	private String ansId;
-	private Integer ansUserId;
+	private int ansUserId;
 	private String ansBody;
 	private String answeredAt;
 	

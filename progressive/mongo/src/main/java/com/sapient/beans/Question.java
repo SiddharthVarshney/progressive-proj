@@ -1,6 +1,7 @@
 package com.sapient.beans;
 
 import java.util.List;
+import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,16 +12,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Question {
 
-	private String quesId;
-	private Integer quesUserId;
+	private int quesId;
+	private int quesUserId;
 	
 	private String title;
 	private String body;
 	
 	private int upvotes;
-	private List<User> upVotesUserId;
+	private List<Integer> upVotesUserId;
 	private int downvotes;
-	private List<User> downVotesUserId;
+	private List<Integer> downVotesUserId;
 	
 	private List<String> tags;
 	private String createdAt;

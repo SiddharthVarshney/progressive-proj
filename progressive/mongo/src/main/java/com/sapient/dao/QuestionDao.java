@@ -8,6 +8,7 @@ import com.sapient.utils.MongoUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
@@ -21,13 +22,13 @@ import com.sapient.contracts.IQuestionDao;
 @Slf4j
 public class QuestionDao implements IQuestionDao {
 
-	public MongoClient mongoClient; 
-	public MongoDatabase progressiveProject;
-	public MongoCollection<Question> questionCol;
+	private MongoClient mongoClient; 
+	private MongoDatabase progressiveProject;
+	private MongoCollection<Question> questionCol;
 	
 	public QuestionDao() {
 		mongoClient =  MongoUtil.mongoUtil(); 
-		progressiveProject = mongoClient.getDatabase("progressive-project");
+		progressiveProject = mongoClient.getDatabase("progressiveProject");
 		questionCol = progressiveProject.getCollection("questions", Question.class);
 	}
 
@@ -36,7 +37,6 @@ public class QuestionDao implements IQuestionDao {
 	public void insertOne(Question question) {
 		questionCol.insertOne(question);
     	log.info("Inserted One ");
-
 	}
 
 	@Override
@@ -53,9 +53,8 @@ public class QuestionDao implements IQuestionDao {
 
 
 	@Override
-	public int getQuestionCount() {
-		// TODO Auto-generated method stub
-		return 0;
+	public long getQuestionCount() {
+		return questionCol.countDocuments();
 	}
 
 }

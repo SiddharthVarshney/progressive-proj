@@ -8,5 +8,5 @@ public interface IQuestionDao {
 
 	public void insertOne(Question question);
 	public List<Question> findAll();
-	public int getQuestionCount();
+	public long getQuestionCount();
 }
