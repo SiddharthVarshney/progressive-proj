@@ -12,8 +12,10 @@ public class LoginBeanCreator {
 
 	}
 	public static LoginBean createLoginBean(HttpServletRequest request) {
-		
-		return new LoginBean(request.getParameter("email"), request.getParameter("password"));
+		LoginBean loginBean = new LoginBean();
+		loginBean.setEmail(request.getParameter("email"));
+		loginBean.setPassword(request.getParameter("password"));
+		return loginBean;
 	}
 	
 }

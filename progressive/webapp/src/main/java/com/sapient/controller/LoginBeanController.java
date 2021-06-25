@@ -3,6 +3,7 @@ package com.sapient.controller;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,9 +31,13 @@ public class LoginBeanController extends HttpServlet {
 		resp.setContentType("text/html");
 		
 		LoginBean logBean = LoginBeanCreator.createLoginBean(req);
-		
-		if( new LoginService().registrationValidate(logBean)) {
-			
+		LoginBean registered = new LoginService().registrationValidate(logBean); 
+		if( registered != null) {
+			String name = registered.getName();
+			Cookie cookie = new Cookie("username", name);
+			resp.addCookie(cookie);
+			Cookie cookie_ = new Cookie("userid", registered.getId().toString());
+			resp.addCookie(cookie_);
 			resp.getWriter().println("<div class=\"alert alert-primary\" role=\"alert\">\r\n"
 					+ "  LOGIN SUCCESS \r\n"
 					+ "</div>");

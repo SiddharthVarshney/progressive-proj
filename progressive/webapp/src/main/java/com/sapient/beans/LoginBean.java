@@ -10,4 +10,6 @@ import lombok.NoArgsConstructor;
 public class LoginBean {
 	String email;
 	String password;
+	String name;
+	Integer id;
 }
