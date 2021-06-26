@@ -25,12 +25,9 @@ public class AskQuestionController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession(); 
-//		session.setAttribute("questionCount", (Integer)1);
-//		session.setAttribute("userId", (Integer)100);
-		
 		
 		if(new AskQuestionService().uploadQuestion(req, session)) {
-			req.getRequestDispatcher("/index.jsp").forward(req, resp);
+			req.getRequestDispatcher("/home").forward(req, resp);
 		}
 		else {
 			resp.setContentType("text/html");

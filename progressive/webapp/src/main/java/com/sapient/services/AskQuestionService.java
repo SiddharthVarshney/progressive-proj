@@ -54,16 +54,14 @@ public class AskQuestionService {
 		QuestionDao questionDao = new QuestionDao();
 		
 		questionDao.insertOne(question);
-		long count = questionDao.getQuestionCount();
-		System.out.println("\n\n\n------------------------\nQuestion Count : " + count + "\n--------------------------\n\n\n");
-
-		//		long count = questionDao.getQuestionCount();
-//		
-//		if((long)session.getAttribute("questionCount") + 1 == count) {
-//			return true;
-//		}
-//		
-		return true;
+		int count = (int)questionDao.getQuestionCount();
+		
+		if((int) session.getAttribute("questionCount") == count - 1) {
+			session.setAttribute("questionCount", count);
+			return true;
+		}
+		
+		return false;
 		
 	}
 }

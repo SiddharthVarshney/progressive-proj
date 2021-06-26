@@ -1,6 +1,7 @@
 package com.sapient.dao;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.sapient.utils.MongoUtil;
@@ -48,6 +49,7 @@ public class QuestionDao implements IQuestionDao {
     		log.info("{}", next);
     		questionList.add(next);
     	}
+    	Collections.reverse(questionList);
     	return questionList;
 	}
 
