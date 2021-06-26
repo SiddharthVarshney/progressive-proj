@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Answer {
 
-	private String ansId;
+	private int ansId;
 	private int ansUserId;
 	private String ansBody;
 	private String answeredAt;
