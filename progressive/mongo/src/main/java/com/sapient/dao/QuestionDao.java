@@ -40,8 +40,8 @@ public class QuestionDao implements IQuestionDao {
 	}
 
 	@Override
-	public List<Question> findAll() {
-		List<Question> questionList = new ArrayList<Question>();
+	public ArrayList<Question> findAll() {
+		ArrayList<Question> questionList = new ArrayList<>();
 		MongoCursor<Question> iterator = questionCol.find().iterator();
     	while(iterator.hasNext()) {
     		Question next = iterator.next();
