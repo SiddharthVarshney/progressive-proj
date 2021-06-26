@@ -6,7 +6,7 @@ import com.sapient.beans.User;
 import com.sapient.dao.UserDAO;
 
 public class LoginService {
-	public LoginBean registrationValidate(LoginBean loginBean) {
+	public LoginBean loginValidate(LoginBean loginBean) {
 		UserDAO dao = new UserDAO();	
 		User user = dao.getUser(loginBean.getEmail());
 		if(user == null) return null;

@@ -18,6 +18,18 @@ public class UserDAO {
 		gc = new GetConnection(); 
 	}
 	
+	public void dropUsersTable() {
+		String sql="DELETE FROM users";
+		try {
+			gc.ps = GetConnection.getPostGressConn().prepareStatement(sql);
+			
+			gc.ps.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public boolean insertUser(User user) {
 		String sql="insert into users(userName, email,password ,gender, rating) values (?,?,?,?,?)"; 
 		
