@@ -11,9 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.sapient.beans.Question;
+import com.sapient.dao.QuestionDao;
 import com.sapient.services.HomeService;
 
-@WebServlet("/hello")
+@WebServlet("/home")
 public class HomeController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -21,7 +22,8 @@ public class HomeController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession(); 
-		session.setAttribute("userId", "");
+		session.setAttribute("userId", 1);
+		session.setAttribute("questionCount", new QuestionDao().getQuestionCount());
 		
 		HomeService questions = new HomeService();
 		ArrayList<Question> quesList = questions.getAllQuestions();
@@ -32,5 +34,9 @@ public class HomeController extends HttpServlet {
 		req.getRequestDispatcher("./index.jsp").forward(req, resp);
 		
 	}
+	
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException ,IOException {
+		doGet(req, resp);
+	};
 
 }
