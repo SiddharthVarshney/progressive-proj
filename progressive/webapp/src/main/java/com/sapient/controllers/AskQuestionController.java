@@ -27,7 +27,7 @@ public class AskQuestionController extends HttpServlet {
 		HttpSession session = req.getSession(); 
 		
 		if(new AskQuestionService().uploadQuestion(req, session)) {
-			req.getRequestDispatcher("/home").forward(req, resp);
+			resp.sendRedirect("./home");
 		}
 		else {
 			resp.setContentType("text/html");
