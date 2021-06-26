@@ -30,7 +30,7 @@
 		<div class="row mt-3 mb-3 border">
 			<div class="col-12">
 				<h1>Question Details</h1>
-				<sap:forEach items="${requestScope.answers}" var="question" >
+				<sap:forEach items="${requestScope.answers}" var="answer" >
 					<div class="card mt-3 mb-3">
 						<div class="card-body">
 						  	<div class="card-text">
