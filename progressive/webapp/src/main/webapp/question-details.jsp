@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>QADetail</title>
+<title>Question Detail</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.css">
 </head>
 <body>
@@ -25,6 +25,22 @@
 					<a href="#" class="btn btn-secondary btn-lg btn-block">Please Login First</a>
 				</sap:if>
 			</div>
+		</div>
+		
+		<div class="row mt-3 mb-3 border">
+			<div class="col-12">
+				<h1>Question Details</h1>
+				<sap:forEach items="${requestScope.answers}" var="question" >
+					<div class="card mt-3 mb-3">
+						<div class="card-body">
+						  	<div class="card-text">
+						  		<p>${answer.ansBody}</p>
+						  	</div>
+						</div>
+					</div>
+				</sap:forEach>
+			</div>
+			
 		</div>
 		
 	</div>
