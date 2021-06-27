@@ -2,6 +2,8 @@ package com.sapient.beans;
 
 import java.util.Date;
 
+import com.sapient.postgres.beans.User;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
