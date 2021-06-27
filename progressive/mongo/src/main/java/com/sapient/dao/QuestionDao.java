@@ -66,6 +66,11 @@ public class QuestionDao implements IQuestionDao {
 		return question.getAnswers();
 	}
 
+	public Question getQuestion(int quesId) {
+		Question question = questionCol.find(Filters.eq("quesId", quesId)).first();
+		return question;
+	}
+
 	public void addAnswerToQuestion(Answer answer, int quesId) {
 		
 		int answerId = getAnswerCount(quesId) + 1;

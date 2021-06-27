@@ -19,7 +19,9 @@
 		<div class="row mt-3">
 			<div class="col-12">
 				<sap:if test="${sessionScope.userId != null}">
-					<a href="./ask-question.jsp" class="btn btn-success btn-lg btn-block">Add Answer</a>
+					<a href="<sap:url value="/add-ans.jsp">
+                						<sap:param name="quesId" value="${requestScope.question.quesId}"/>
+         							</sap:url>" class="btn btn-success btn-lg btn-block">Add Answer</a>
 				</sap:if>
 				<sap:if test="${sessionScope.userId == null}">
 					<a href="#" class="btn btn-secondary btn-lg btn-block">Please Login First</a>
@@ -30,7 +32,9 @@
 		<div class="row mt-3 mb-3 border">
 			<div class="col-12">
 				<h1>Question Details</h1>
-				<sap:forEach items="${requestScope.answers}" var="answer" >
+				<h3>  Question Title: ${requestScope.question.title}</h3>
+				<h4>  Question Body: ${requestScope.question.body}</h4>
+				<sap:forEach items="${requestScope.question.answers}" var="answer" >
 					<div class="card mt-3 mb-3">
 						<div class="card-body">
 						  	<div class="card-text">

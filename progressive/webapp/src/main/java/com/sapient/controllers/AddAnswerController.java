@@ -24,10 +24,11 @@ public class AddAnswerController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session = req.getSession();
+		HttpSession session = req.getSession(false);
 
 		if (new AddAnswerService().uploadAnswer(req, session)) {
-			req.getRequestDispatcher("/index.jsp").forward(req, resp);
+			String quesDetailUrl = "questionDetails?quesId=" + req.getParameter("quesId");
+			resp.sendRedirect(quesDetailUrl);
 		} else {
 			resp.setContentType("text/html");
 			PrintWriter out = resp.getWriter();

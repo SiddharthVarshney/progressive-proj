@@ -28,7 +28,12 @@
 							<label for="ansBody">Answer Body</label> 
 							<textarea class="form-control" name="ansBody" id="ansBody" rows="3" placeholder="Enter answer"></textarea>
 						</div>
-						 <button type="submit" class="btn btn-primary">Submit</button>
+						<input type="hidden" name="quesId" id="quesId" value="${param.quesId}" />
+                   
+						<button type="submit" class="btn btn-primary">
+         					Submit
+         				</button>
+						 
 					</div>
 				</form>
 			</div>

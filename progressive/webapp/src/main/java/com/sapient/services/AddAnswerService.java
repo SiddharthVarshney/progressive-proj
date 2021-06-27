@@ -26,10 +26,11 @@ public class AddAnswerService {
 	}
 
 	public boolean uploadAnswer(HttpServletRequest req, HttpSession session) {
-		int questionId = (Integer) session.getAttribute("quesId");
+		int questionId = Integer.parseInt(req.getParameter("quesId"));
 		Answer answer = createAnswerBean(req, session);
 		QuestionDao questionDao = new QuestionDao();
 		questionDao.addAnswerToQuestion(answer, questionId);
+		System.out.println("answer: " + req.getParameter("ansBody"));
 		return true;
 	}
 
