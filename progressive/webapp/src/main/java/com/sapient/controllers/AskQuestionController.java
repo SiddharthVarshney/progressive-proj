@@ -24,6 +24,22 @@ public class AskQuestionController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		if(req.getParameter("title") == null || req.getParameter("title").equals("") ||
+				req.getParameter("body") == null || req.getParameter("body").equals("") ||
+				req.getParameter("quesTags") == null || req.getParameter("quesTags").equals(""))
+		{
+			resp.setContentType("text/html");
+			PrintWriter out = resp.getWriter();   
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('Please fill all the fields of the form');");
+			out.println("location='ask-question.jsp';");
+			out.println("</script>"); 
+			
+			req.getRequestDispatcher("/ask-question.jsp").include(req, resp);
+		}
+		
+		
 		HttpSession session = req.getSession(); 
 		
 		if(new AskQuestionService().uploadQuestion(req, session)) {
