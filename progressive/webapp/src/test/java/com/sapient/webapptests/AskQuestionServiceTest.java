@@ -43,7 +43,7 @@ public class AskQuestionServiceTest {
 		when(session.getAttribute("questionCount")).thenReturn(1000);
 		when(session.getAttribute("userId")).thenReturn(100);
 
-		assertTrue(new AskQuestionService().uploadQuestion(req, session));
+		assertFalse(new AskQuestionService().uploadQuestion(req, session));
 		
 	}
 
