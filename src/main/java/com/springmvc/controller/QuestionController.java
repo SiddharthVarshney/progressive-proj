@@ -37,15 +37,40 @@ public class QuestionController {
 	//save question
 	@RequestMapping(method = RequestMethod.POST, path="/save-question")
 	public String saveQuestion(@ModelAttribute ("question") Question question) {
-		return dao.saveQuestion(question) ? "show-questions" :"error";
+		return questionDao.saveQuestion(question) ?  "redirect:/all-questions.do" :"error";
 	}
 	
 	
-	@RequestMapping(method = RequestMethod.GET, path="/question-details/{quesid}")
-	public String getQuestion(@PathVariable("quesid") int quesid, Model model){
-		model.addAttribute("question", questionDao.getQuestionById(quesid));
+	@RequestMapping(method = RequestMethod.GET, path="/question-details")
+	public String getQuestion(Model model, String quesid){
+		model.addAttribute("question", questionDao.getQuestionById(Integer.parseInt(quesid)));
 		return "show-one-question";
 	}
+	
+
+
+    @RequestMapping(method = RequestMethod.GET, path="/questionupdate")
+    public String getUpdateQuestionForm(Model model,String id) {
+        Question que =  questionDao.getQuestionById(Integer.parseInt(id));
+        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"+que);
+        model.addAttribute("question",que);
+        return "update-question";
+
+
+    }
+    
+    @RequestMapping(method = RequestMethod.POST, path="/question")
+    public String updateQuestion(@ModelAttribute ("question") Question question) {
+        System.out.println(question);
+        questionDao.updateQuestion(question);
+        return "redirect:/all-questions.do";
+
+    }
+    
+
+
+
+
 	
 	
 }

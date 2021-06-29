@@ -11,9 +11,14 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
 import com.springmvc.util.MongoUtil;
+
+import lombok.extern.slf4j.Slf4j;
+
 import com.springmvc.entity.Question;
 
+@Slf4j
 @Component
 public class QuestionDAO {
 
@@ -61,4 +66,21 @@ public class QuestionDAO {
 		return false;
 	    
 	}
+	
+	public boolean updateQuestion(Question question) {
+		
+		System.out.println("------------------------------");
+		System.out.println(question);
+		System.out.println("-------------------------------");
+        
+		try {
+			questionCol.updateOne(Filters.eq("quesid", question.getQuesid()),Updates.combine(Updates.set("question", question.getQuestion()),Updates.set("option1", question.getOption1()),Updates.set("option2", question.getOption2()),Updates.set("option3", question.getOption3()),Updates.set("option4", question.getOption4())));
+			return true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+		return false;
+    }
 }

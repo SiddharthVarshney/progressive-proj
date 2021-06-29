@@ -5,6 +5,8 @@
 	<div class="container">
 	<div class="alert alert-dismissible alert-primary">
 	  	<h4 class="alert-heading">${title}</h4>
+	  	<a href="./add-question">Ask-question</a>
+	  	
 	  	<table class="table table-hover mb-0">
 		  <thead>
 		    <tr>
@@ -27,7 +29,7 @@
 				      <td>${que.option3}</td>
 				      <td>${que.option4}</td>
 				      <td>
-					      <a href="<sap:url value="/question-details/${que.quesid}">
+					      <a href="<sap:url value="/question-details/?quesid=${que.quesid}">
 	         				</sap:url>" class="btn btn-success">Details</a>
 	         		  </td>
 				  </tr>

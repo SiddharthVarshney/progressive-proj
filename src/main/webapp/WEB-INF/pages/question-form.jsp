@@ -1,72 +1,65 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ page isELIgnored="false"  %> 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="sap"%>
+<%@ include file="header.jspf" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Add Question</title>
-<link href="./css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
 
-	<%@ include file="./header.jspf" %>
-	<div class="container">
-		<div class="row">
-			<div class="col-6">
+
+
+<div class="row">
+	<div class="col-md-8">
+		<sf:form modelAttribute="question" action="save-question" method="post">
 			
-				<sf:form modelAttribute="question" action="save-question" method="post">
-					<div class="form-group row mb-2">
-				      <label for="question" class="col-sm-2 col-form-label">Question</label>
-				      <div class="col-sm-10">
-				        <sf:input path="question" cssClass="form-control"/>
-				      </div>
-				    </div>
-				    
-				    
-					<div class="form-group row mb-2">
-				      <label for="opt1" class="col-sm-2 col-form-label">Option 1</label>
-				      <div class="col-sm-10">
-				        <sf:input path="opt1" cssClass="form-control"/>
-				      </div>
-				    </div>
-				    
-				    
-					<div class="form-group row mb-2">
-				      <label for="opt2" class="col-sm-2 col-form-label">Option 2</label>
-				      <div class="col-sm-10">
-				        <sf:input path="opt2" cssClass="form-control"/>
-				      </div>
-				    </div>
-				    
-				    
-					<div class="form-group row mb-2">
-				      <label for="opt3" class="col-sm-2 col-form-label">Option 3</label>
-				      <div class="col-sm-10">
-				        <sf:input path="opt3" cssClass="form-control"/>
-				      </div>
-				    </div>
-				    
-				    
-					<div class="form-group row mb-3">
-				      <label for="opt4" class="col-sm-2 col-form-label">Option 4</label>
-				      <div class="col-sm-10">
-				        <sf:input path="opt4" cssClass="form-control"/>
-				      </div>
-				    </div>
-				    
-				    <div class="form-group row mb-3">
-				    	<div class="col-sm-2"></div>
-				      <div class="col-sm-10">
-				        <button type="submit">Submit</button>
-				      </div>
-				    </div>
-				</sf:form>
-			
+			<div class="form-group row">
+				<label class="col-md-4" for="question">Enter Question</label>
+				<div class="col-md-8">
+					<sf:input path="question" cssClass="form-control" minlength="1" />
+				</div>
 			</div>
-		</div>
+			
+			<div class="form-group row">
+				<label class="col-md-4" for="option1">Enter Option1</label>
+				<div class="col-md-8">
+					<sf:input path="option1" cssClass="form-control" minlength="1"/>
+				</div>
+			</div>
+			
+
+			<div class="form-group row">
+				<label class="col-md-4" for="option2">Enter Option2</label>
+				<div class="col-md-8">
+					<sf:input path="option2" cssClass="form-control" minlength="1"/>
+				</div>
+			</div>
+			
+
+			<div class="form-group row">
+				<label class="col-md-4" for="option3">Enter Option3</label>
+				<div class="col-md-8">
+					<sf:input path="option3" cssClass="form-control" minlength="1"/>
+				</div>
+			</div>
+			
+
+			<div class="form-group row">
+				<label class="col-md-4" for="option4">Enter Option4</label>
+				<div class="col-md-8">
+					<sf:input path="option4" cssClass="form-control" minlength="1" />
+				</div>
+			</div>
+			
+
+			<div class="form-group row">
+				<label class="col-md-4"></label>
+				<div class="col-md-8">
+					 <button class="btn btn-primary">Submit</button>
+				</div>
+			</div>
+		</sf:form>
 	</div>
-</body>
-</html>
+
+	<div class="col">
+	</div>
+</div>
+
+
+
+
+<%@ include file="footer.jsp" %>
