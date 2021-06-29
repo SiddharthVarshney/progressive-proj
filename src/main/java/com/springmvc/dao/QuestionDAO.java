@@ -40,4 +40,25 @@ public class QuestionDAO {
 	public Question getQuestionById(int quesid) {
 		return questionCol.find(Filters.eq("quesid", quesid)).first();
 	}
+
+	
+	public long getQuestionCount() {
+		return questionCol.countDocuments();
+	}
+	
+	
+	public boolean saveQuestion(Question question) {
+		
+		int count = (int) getQuestionCount();
+		try {
+			question.setQuesid(count+1);
+			questionCol.insertOne(question);
+			log.info("Inserted One ");
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	    
+	}
 }
