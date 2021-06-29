@@ -12,4 +12,4 @@ public class LoginBean {
 	String password;
 	String name;
 	Integer id;
-}
+} 

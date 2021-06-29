@@ -33,7 +33,7 @@ public class LoginController extends HttpServlet {
 		
 		LoginBean logBean = LoginBeanCreator.createLoginBean(req);
 		LoginBean registered = new LoginService().loginValidate(logBean); 
-		if( registered != null) {
+		if( registered != null && logBean.getEmail()!=null && logBean.getPassword()!=null) {
 			String name = registered.getName();
 //			Cookie cookie = new Cookie("username", name);
 //			resp.addCookie(cookie);
