@@ -37,14 +37,9 @@ public class QuestionController {
 	//save question
 	@RequestMapping(method = RequestMethod.POST, path="/save-question")
 	public String saveQuestion(@ModelAttribute ("question") Question question) {
-		System.out.println("QUESTION : " + question.getQuestion());
-		System.out.println("OPTION 1 : " + question.getOption1());
-		System.out.println("OPTION 2 : " + question.getOption2());
-		System.out.println("OPTION 3 : " + question.getOption3());
-		System.out.println("OPTION 4 : " + question.getOption4());
-		
-		return "hello";
+		return dao.saveQuestion(question) ? "show-questions" :"error";
 	}
+	
 	
 	@RequestMapping(method = RequestMethod.GET, path="/question-details/{quesid}")
 	public String getQuestion(@PathVariable("quesid") int quesid, Model model){
