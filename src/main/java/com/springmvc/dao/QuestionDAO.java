@@ -75,6 +75,7 @@ public class QuestionDAO {
         
 		try {
 			questionCol.updateOne(Filters.eq("quesid", question.getQuesid()),Updates.combine(Updates.set("question", question.getQuestion()),Updates.set("option1", question.getOption1()),Updates.set("option2", question.getOption2()),Updates.set("option3", question.getOption3()),Updates.set("option4", question.getOption4())));
+//			questionCol.updateOne(null, null)
 			return true;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -83,4 +84,16 @@ public class QuestionDAO {
 		}
 		return false;
     }
+	
+	public boolean deleteQuestion(int questionId) {
+        try {
+			questionCol.deleteOne(Filters.eq("quesid", questionId));
+			return true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        return false;
+    }
+	
 }

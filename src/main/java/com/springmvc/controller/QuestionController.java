@@ -67,6 +67,14 @@ public class QuestionController {
 
     }
     
+    @RequestMapping(method = RequestMethod.GET, path="/delete-question")
+    public String deleteQuestion(Model model,String id) {
+          questionDao.deleteQuestion(Integer.parseInt(id));
+          return "redirect:/all-questions.do";
+
+
+    }
+    
 
 
 

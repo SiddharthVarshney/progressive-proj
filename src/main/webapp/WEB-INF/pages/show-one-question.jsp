@@ -17,9 +17,12 @@
 				    <a href="<sap:url value="/questionupdate?id=${question.quesid}">
 	         				</sap:url>" class="btn btn-primary">Edit</a>
 
-	         		<a href="<sap:url value="/delete-question">
-	                						<sap:param name="quesid" value="${question.quesid}"/>
-	         				</sap:url>" class="btn btn-primary">Delete</a>
+	         	
+					      <a href="<sap:url value="/delete-question/?id=${question.quesid}">
+	         				</sap:url>" class="btn btn-success">Delete</a>
+	         		  
+	         		  
+	         		
 				  </div>
 				</div>
 			</div>

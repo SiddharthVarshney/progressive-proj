@@ -32,6 +32,8 @@
 					      <a href="<sap:url value="/question-details/?quesid=${que.quesid}">
 	         				</sap:url>" class="btn btn-success">Details</a>
 	         		  </td>
+	         		  
+	         		  
 				  </tr>
 			  </sap:forEach>
 		    
