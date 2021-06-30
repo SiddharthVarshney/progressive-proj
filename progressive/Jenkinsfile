@@ -23,9 +23,9 @@ pipeline {
             
             steps {
                 echo "------------- Starting Database -------------"
-                bat "docker restart postgres-sapient"
+                sh "docker restart postgres-sapient"
                 echo ">>>>>> Postgres running..."
-                bat "docker restart mongo" 
+                sh "docker restart mongo" 
                 echo ">>>>>> Mongo running..."
 
             }
@@ -37,7 +37,7 @@ pipeline {
 
                 script {
                 if (!fileExists("${path_}/pom.xml")) {
-                        bat "git clone https://github.com/SiddharthVarshney/progressive-proj.git"
+                        sh "git clone https://github.com/SiddharthVarshney/progressive-proj.git"
                     } else {
                         echo "Local git repo already present..."
                     }
@@ -46,9 +46,9 @@ pipeline {
 
                 // Run Maven on a Unix agent.
                 dir("${path_}") {
-                    bat "mvn clean install -Dmaven.test.skip=true"
-                    bat "docker build -t webtest ."
-                    bat "docker run --name webtest -it --rm -p 8888:8080 webtest"
+                    sh "mvn clean install -Dmaven.test.skip=true"
+                    sh "docker build -t webtest ."
+                    sh "docker run --name webtest -it --rm -p 8888:8080 webtest"
                 }
             }
 
