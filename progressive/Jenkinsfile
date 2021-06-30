@@ -13,7 +13,7 @@ pipeline {
 
     environment { 
         //BitBucketUser = credentials("${CredentialsID}")  
-        path_ = "progressive"
+        path_ = "progressive/progressive"
     }
 
     stages {
