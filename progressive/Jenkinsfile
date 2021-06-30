@@ -47,8 +47,8 @@ pipeline {
                 // Run Maven on a Unix agent.
                 dir("${path_}") {
                     sh "mvn clean install -Dmaven.test.skip=true"
-                    sh "docker build -t webtest ."
-                    sh "docker run --name webtest -it --rm -p 8888:8080 webtest"
+                    sh "winpty docker build -t webtest ."
+                    sh "winpty docker run --name webtest -it --rm -p 8888:8080 webtest"
                 }
             }
 
