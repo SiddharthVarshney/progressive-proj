@@ -33,8 +33,14 @@ pipeline {
         stage('Build') {
 
             steps {
+
+                if (!fileExists("${path_}/pom.xml")) {
+                        bat "git clone https://github.com/SiddharthVarshney/progressive-proj.git"
+                    } else {
+                        echo "Local git repo already present..."
+                    }
+                
 		
-                git 'https://github.com/SiddharthVarshney/progressive-proj.git'
 
                 // Run Maven on a Unix agent.
                 bat "mvn clean install -Dmaven.test.skip=true"
