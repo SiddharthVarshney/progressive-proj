@@ -48,7 +48,7 @@ pipeline {
                 dir("${path_}") {
                     bat "mvn clean install -Dmaven.test.skip=true"
                     bat "docker build -t webtest ."
-                    bat "winpty docker run --name webtest -it --rm -p 8888:8080 webtest"
+                    bat "docker run --name webtest -it --rm -p 8888:8080 webtest"
                 }
             }
 
