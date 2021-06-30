@@ -7,7 +7,8 @@ import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
 
 import com.mongodb.MongoClientSettings;
-import com.mongodb.client.MongoClient;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientOptions;
 import com.mongodb.client.MongoClients;
 
 public class MongoUtil {
@@ -19,7 +20,9 @@ public class MongoUtil {
 		        .codecRegistry(pojoCodecRegistry)
 		        .build();
 		
-		return MongoClients.create(settings);
+		return new MongoClient("172.17.0.3", MongoClientOptions.builder()
+.codecRegistry(pojoCodecRegistry)
+.build());
 	}
 
 }

@@ -5,25 +5,48 @@ pipeline {
         maven "maven"
     }
     
+    parameters {
+        //string(name: "CredentialsID", defaultValue: '', description: "Bitbucket credential ID set up in Jenkins")
+        choice(name: 'ENTRY', choices: ['Start Database', 'Deploy'], description: 'Select the start phase of deployment')
+
+    }
+
+    environment { 
+        //BitBucketUser = credentials("${CredentialsID}")  
+        path_ = "progressive"
+    }
 
     stages {
+            
+        stage('Databse Start') {
+            when { expression { return params.ENTRY == "Start Database" } }
+            steps {
+                echo "------------- Starting Database -------------"
+                bat "docker restart postgres-sapient"
+                echo ">>>>>> Postgres running..."
+                bat "docker restart mongo" 
+                echo ">>>>>> Mongo running..."
+
+            }
+        }
+
         stage('Build') {
+
+            when { expression { return params.ENTRY == "Deploy" } }
             steps {
 		
                 git 'https://github.com/SiddharthVarshney/progressive-proj.git'
 
                 // Run Maven on a Unix agent.
                 bat "mvn clean install -Dmaven.test.skip=true"
-
-                bat "docker rm webtest"
-                bat "docker rmi webtest"
                 bat "docker build -t webtest ."
                 bat "docker run --name webtest -it --rm -p 8888:8080 webtest"
-
-
             }
 
             }
+
+        
+
         }
 
   post {
