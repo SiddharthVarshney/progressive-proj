@@ -45,10 +45,11 @@ pipeline {
 		
 
                 // Run Maven on a Unix agent.
-                bat "cd progressive"
-                bat "mvn clean install -Dmaven.test.skip=true"
-                bat "docker build -t webtest ."
-                bat "docker run --name webtest -it --rm -p 8888:8080 webtest"
+                dir("${path_}") {
+                    bat "mvn clean install -Dmaven.test.skip=true"
+                    bat "docker build -t webtest ."
+                    bat "docker run --name webtest -it --rm -p 8888:8080 webtest"
+                }
             }
 
             }
