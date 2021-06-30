@@ -13,7 +13,7 @@ pipeline {
 
     environment { 
         //BitBucketUser = credentials("${CredentialsID}")  
-        path_ = "progressive/progressive"
+        path_ = "progressive"
     }
 
     stages {
@@ -45,6 +45,7 @@ pipeline {
 		
 
                 // Run Maven on a Unix agent.
+                bat "cd progressive"
                 bat "mvn clean install -Dmaven.test.skip=true"
                 bat "docker build -t webtest ."
                 bat "docker run --name webtest -it --rm -p 8888:8080 webtest"
