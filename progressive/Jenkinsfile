@@ -32,7 +32,6 @@ pipeline {
 
         stage('Build') {
 
-            when { expression { return params.ENTRY == "Deploy" } }
             steps {
 		
                 git 'https://github.com/SiddharthVarshney/progressive-proj.git'
