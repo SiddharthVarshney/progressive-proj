@@ -20,6 +20,7 @@ pipeline {
             
         stage('Databse Start') {
             when { expression { return params.ENTRY == "Start Database" } }
+            
             steps {
                 echo "------------- Starting Database -------------"
                 bat "docker restart postgres-sapient"
@@ -34,12 +35,13 @@ pipeline {
 
             steps {
 
+                script {
                 if (!fileExists("${path_}/pom.xml")) {
                         bat "git clone https://github.com/SiddharthVarshney/progressive-proj.git"
                     } else {
                         echo "Local git repo already present..."
                     }
-                
+                }
 		
 
                 // Run Maven on a Unix agent.
